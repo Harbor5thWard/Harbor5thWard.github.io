@@ -1,0 +1,45 @@
+:root {
+    --rem-size: 16px;
+    --font-family: Helvetica;
+    --background-color: lightgray;
+    --font-color: black;
+}
+
+html {
+    font-size: var(--rem-size);
+    font-family: var(--font-family);
+}
+
+
+body {
+    height: 100vh;
+    margin: 0;
+
+    display:flex;
+    flex-direction: column;
+
+    background-color: var(--background-color);
+    color: var(--font-color);
+}
+
+body > * {
+    padding: 0 1rem;
+    margin: 0;
+}
+
+
+/* header {} */
+
+main {
+    flex-grow: 1;
+
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+}
+
+footer {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
