@@ -8,7 +8,7 @@
     <meta property="og:title" content="Harbor 5th Ward" />
     <link rel="stylesheet" href="./index.css"></link>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.1/css/all.css">
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js" integrity="sha256-/H4YS+7aYb9kJ5OKhFYPUjSJdrtV6AeyJOtTkw6X72o=" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -37,6 +37,12 @@
 
         <p>
             Zoom Link <a href="https://skipio.zoom.us/j/5589012073">https://skipio.zoom.us/j/5589012073</a>
+            <p>Meeting ID: 558 901 2073</p>
+            <p>
+                Passcode:
+                <button id="sundaySchoolPasswordButton">Reveal</button>
+                <span id="sundaySchoolPasswordText"></span>
+            </p>
         </p>
 
 
@@ -47,6 +53,20 @@
         <a href="https://directory.churchofjesuschrist.org/">Directory</a>
         <a href="https://www.facebook.com/groups/352374239338591">Facebook Group</a>
     </footer>
+
+
+    <script>
+        const passphrase = 'secret harbor pioneer passphrase';
+        const encryptedSundaySchoolPassphrase = 'U2FsdGVkX1+A/YPK4PSlMYmoVXH/Y7tE86+fqA8GG3U="';
+
+        window.encrypt = function(text) { return CryptoJS.AES.encrypt(text, passphrase).toString(); }
+        decrypt = function(text) { return CryptoJS.AES.decrypt(text, passphrase).toString(CryptoJS.enc.Utf8); }
+
+        document.getElementById('sundaySchoolPasswordButton').onclick = function () {
+            this.style.display = 'none';
+            document.getElementById('sundaySchoolPasswordText').innerHTML = decrypt(encryptedSundaySchoolPassphrase);
+        };
+    </script>
 </body>
 
 
