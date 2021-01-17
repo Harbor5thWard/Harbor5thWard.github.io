@@ -31,17 +31,29 @@
             Zoom Link <a href="https://skipio.zoom.us/j/98445417563">https://skipio.zoom.us/j/98445417563</a>
         </p>
 
-        <h2>Sunday School</h2>
+        <h2>Adult Sunday School</h2>
 
         <p>Time: 10:30am</p>
 
         <p>
-            Zoom Link <a href="https://skipio.zoom.us/j/5589012073">https://skipio.zoom.us/j/5589012073</a>
-            <p>Meeting ID: 558 901 2073</p>
+            <p>Zoom Meeting ID: 921 9638 0050</p>
             <p>
-                Passcode:
-                <button id="sundaySchoolPasswordButton">Reveal</button>
-                <span id="sundaySchoolPasswordText"></span>
+                <button id="adultSundaySchoolPasswordButton">Details</button>
+                <p><a id="adultSundaySchoolLink"></a><p>
+                <span id="adultSundaySchoolPasswordText"></span>
+            </p>
+        </p>
+
+        <h2>Youth Sunday School</h2>
+
+        <p>Time: 11:00am</p>
+
+        <p>
+            <p>Zoom Meeting ID: 958 9548 1286</p>
+            <p>
+                <button id="youthSundaySchoolPasswordButton">Details</button>
+                <p><a id="youthSundaySchoolLink"></a><p></p>
+                <span id="youthSundaySchoolPasswordText"></span>
             </p>
         </p>
 
@@ -57,14 +69,30 @@
 
     <script>
         const passphrase = 'secret harbor pioneer passphrase';
-        const encryptedSundaySchoolPassphrase = 'U2FsdGVkX1+A/YPK4PSlMYmoVXH/Y7tE86+fqA8GG3U="';
+
+        const encryptedAdultSundaySchoolLink = 'U2FsdGVkX197SBpwd7yOgPicP/3GxmOyHFVqIXK+aWZVqTE9xvTOXebV2r1VhhXTGTuniYZXBOwuokJHPTO9CHuuRINXAv/Oo9VGclZKqjcYOWluMt2wxZERDZ3qo0Ur';
+        const encryptedAdultSundaySchoolPassphrase = 'U2FsdGVkX18u3lX4RusV0cc2lOzsPk0ksGShuudDQlw=';
+        const encryptedYouthSundaySchoolLink = 'U2FsdGVkX19IGNSJJ4zKMFwVBz8lICFiwioGTN1zTgfdAYO1OIo7rJWg+0AyCOw2krXPc4AwPNgzwh+UO37M8ItKdSD00z3jAwWz7qRKWUlKN2Zs/yFT7NweIsV1ghDy';
+        const encryptedYouthSundaySchoolPassphrase = 'U2FsdGVkX1/n/cUfK0ZTFGQoPfFC7WWcUf4llGDcq8A=';
 
         window.encrypt = function(text) { return CryptoJS.AES.encrypt(text, passphrase).toString(); }
         decrypt = function(text) { return CryptoJS.AES.decrypt(text, passphrase).toString(CryptoJS.enc.Utf8); }
 
-        document.getElementById('sundaySchoolPasswordButton').onclick = function () {
+        document.getElementById('adultSundaySchoolPasswordButton').onclick = function () {
             this.style.display = 'none';
-            document.getElementById('sundaySchoolPasswordText').innerHTML = decrypt(encryptedSundaySchoolPassphrase);
+            let link = decrypt(encryptedAdultSundaySchoolLink);
+            let a = document.getElementById('adultSundaySchoolLink');
+            a.innerHTML = link;
+            a.href = link;
+            document.getElementById('adultSundaySchoolPasswordText').innerHTML = `Passcode: ${decrypt(encryptedAdultSundaySchoolPassphrase)}`;
+        };
+        document.getElementById('youthSundaySchoolPasswordButton').onclick = function () {
+            this.style.display = 'none';
+            let link = decrypt(encryptedYouthSundaySchoolLink);
+            let a = document.getElementById('youthSundaySchoolLink');
+            a.innerHTML = link;
+            a.href = link;
+            document.getElementById('youthSundaySchoolPasswordText').innerHTML = `Passcode: ${decrypt(encryptedYouthSundaySchoolPassphrase)}`;
         };
     </script>
 </body>
