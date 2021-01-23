@@ -82,14 +82,24 @@ main > * {
     align-items: center;
     border-top: 1px solid black;
     border-bottom: 1px solid black;
-    padding: 1rem 0;
     width: 100vw;
     background-color: white;
-    margin: 0;
+    margin: 0;;
 }
 
-#buttons > * {
-    padding: 0 4px;
+#buttons button {
+    padding: 1rem 1rem;
+    background-color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+#buttons button:hover {
+    background-color: lightgray;
+}
+#buttons button:active {
+    background-color: black;
+    color: white;
 }
 
 .zoom {
@@ -132,6 +142,7 @@ main > * {
     header > h1 { font-size: 3rem; }
     main { flex-direction: column; }
     .zoom { width: 350px; }
+    .text-box {margin-bottom: 100px;}
     main > *:nth-child(2n) {
         border-top: 2px solid black;
     }
