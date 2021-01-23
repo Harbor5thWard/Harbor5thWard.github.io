@@ -7,11 +7,11 @@
     <meta name="Description" content="Harbor 5th Ward" />
     <meta property="og:title" content="Harbor 5th Ward" />
     <link rel="stylesheet" href="./index.css"></link>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.1/css/all.css">
+    <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.1/css/all.css"> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js" integrity="sha256-/H4YS+7aYb9kJ5OKhFYPUjSJdrtV6AeyJOtTkw6X72o=" crossorigin="anonymous"></script>
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/img/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/img/favicon/favicon-16x16.png">
     <link rel="manifest" href="/site.webmanifest">
 </head>
 
@@ -19,57 +19,65 @@
     <header>
         <h1>Harbor 5th Ward</h1>
     </header>
-
-    <main>
-        <p>
-            239 East 1100 South <br>
-            American Fork UT 84003
-            <a href="https://goo.gl/maps/G1PoXQ3FHThMsHB77"><i class="fa fa-map-marked-alt"></i></a>
-        </p>
-
-        <h2>Sacrament</h2>
-
-        <p>Time: 9:00am</p>
-
-        <p>
-            Zoom Link <a href="https://skipio.zoom.us/j/98445417563">https://skipio.zoom.us/j/98445417563</a>
-        </p>
-
-        <h2>Adult Sunday School</h2>
-
-        <p>Time: 10:30am</p>
-
-        <p>
-            <p>Zoom Meeting ID: 921 9638 0050</p>
-            <p>
-                <button id="adultSundaySchoolPasswordButton">Details</button>
-                <p><a id="adultSundaySchoolLink"></a><p>
-                <span id="adultSundaySchoolPasswordText"></span>
-            </p>
-        </p>
-
-        <h2>Youth Sunday School</h2>
-
-        <p>Time: 11:00am</p>
-
-        <p>
-            <p>Zoom Meeting ID: 958 9548 1286</p>
-            <p>
-                <button id="youthSundaySchoolPasswordButton">Details</button>
-                <p><a id="youthSundaySchoolLink"></a><p></p>
-                <span id="youthSundaySchoolPasswordText"></span>
-            </p>
-        </p>
-
-
-    </main>
-
-    <footer>
-        <!-- <a href="https://www.churchofjesuschrist.org/calendar/">Calendar</a> -->
+    <section id="buttons">
+        <a href="https://www.churchofjesuschrist.org/manual/come-follow-me">Come Follow Me</a>
         <a href="https://directory.churchofjesuschrist.org/">Directory</a>
-        <a href="https://www.facebook.com/groups/352374239338591">Facebook Group</a>
-    </footer>
+        <a href="https://www.facebook.com/groups/352374239338591">Facebook</a>
+        <a href="https://goo.gl/maps/G1PoXQ3FHThMsHB77">Map</a>
+    </section>
 
+    <main class="main">
+        <section id='meetings'>
+            <h1>Meetings</h1>
+
+            <div id='sacrament' class='box'>
+                <h1>Sacrament Meeting</h1>
+                <div>Time: 9:00am</div>
+            </div>
+
+            <h2>1st & 3rd Sundays</h2>
+
+            <div id='adultSundaySchool' class='box'>
+                <h1>Adult Sunday School</h1>
+                <div>Time: 10:30am</div>
+            </div>
+
+            <div id='youthSundaySchool' class='box'>
+                <h1>Youth Sunday School</h1>
+                <div>Time: 11:00am</div>
+            </div>
+        <!--
+            <h2>2nd & 4th Sundays</h2>
+
+            <div id='' class='box'>
+                <h1>Elder's Quorum</h1>
+                <div>Time: 11:00am</div>
+            </div>
+
+            <div id='' class='box'>
+                <h1>Relief Society</h1>
+                <div>Time: 11:00am</div>
+            </div>
+
+            <div id='' class='box'>
+                <h1>Young Men</h1>
+                <div>Time: 11:00am</div>
+            </div>
+
+            <div id='' class='box'>
+                <h1>Young Women</h1>
+                <div>Time: 11:00am</div>
+            </div>
+        -->
+        </section>
+
+        <section id='updates'>
+            <h1>Info & Announcements</h1>
+            <ul class='text-box'>
+                <li><em>Nothing yet</em></li>
+            </ul>
+        </section>
+    </main>
 
     <script>
         const passphrase = 'secret harbor pioneer passphrase';
@@ -78,22 +86,20 @@
         decrypt = function(text) { return CryptoJS.AES.decrypt(text, passphrase).toString(CryptoJS.enc.Utf8); }
 
         let links = [{
-            prefix: 'adultSundaySchool',
-            link: 'U2FsdGVkX197SBpwd7yOgPicP/3GxmOyHFVqIXK+aWZVqTE9xvTOXebV2r1VhhXTGTuniYZXBOwuokJHPTO9CHuuRINXAv/Oo9VGclZKqjcYOWluMt2wxZERDZ3qo0Ur',
-            passphrase: 'U2FsdGVkX18u3lX4RusV0cc2lOzsPk0ksGShuudDQlw=',
+            id: 'sacrament',
+            link: 'U2FsdGVkX1+nfc3WeuNd3kv6Fpm7eIi8hBg3Efi9Tv3tsVaAXjd7Ig3M22xzul7yZsMG22PFZPKcftoZO+nmxw==',
         }, {
-            prefix: 'youthSundaySchool',
+            id: 'adultSundaySchool',
+            link: 'U2FsdGVkX197SBpwd7yOgPicP/3GxmOyHFVqIXK+aWZVqTE9xvTOXebV2r1VhhXTGTuniYZXBOwuokJHPTO9CHuuRINXAv/Oo9VGclZKqjcYOWluMt2wxZERDZ3qo0Ur',
+        }, {
+            id: 'youthSundaySchool',
             link: 'U2FsdGVkX19IGNSJJ4zKMFwVBz8lICFiwioGTN1zTgfdAYO1OIo7rJWg+0AyCOw2krXPc4AwPNgzwh+UO37M8ItKdSD00z3jAwWz7qRKWUlKN2Zs/yFT7NweIsV1ghDy',
-            passphrase: 'U2FsdGVkX1/n/cUfK0ZTFGQoPfFC7WWcUf4llGDcq8A=',
         }].map(v => {
-            document.getElementById(`${v.prefix}PasswordButton`).onclick = function () {
-                this.style.display = 'none';
+            document.getElementById(v.id).onclick = function () {
+                console.log('id', v.id)
                 let link = window.decrypt(v.link);
-                let a = document.getElementById(`${v.prefix}Link`);
-                a.innerHTML = link;
-                a.href = link;
-                document.getElementById(`${v.prefix}PasswordText`).innerHTML = `Passcode: ${window.decrypt(v.passphrase)}`;
-            };
+                window.open(link);
+            }
         });
 
     </script>
