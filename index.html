@@ -113,6 +113,48 @@
             }
         });
 
+        Date.prototype.getWeekOfMonth = function(exact) {
+            var month = this.getMonth()
+                , year = this.getFullYear()
+                , firstWeekday = new Date(year, month, 1).getDay()
+                , lastDateOfMonth = new Date(year, month + 1, 0).getDate()
+                , offsetDate = this.getDate() + firstWeekday - 1
+                , index = 1 // start index at 0 or 1, your choice
+                , weeksInMonth = index + Math.ceil((lastDateOfMonth + firstWeekday - 7) / 7)
+                , week = index + Math.floor(offsetDate / 7)
+            ;
+            if (exact || week < 2 + index) return week;
+            return week === weeksInMonth ? index + 5 : week;
+        };
+
+        // Takes day of week, 0 is Sunday
+        Date.prototype.nextDay = function (dayOfWeek) {
+            this.setDate(this.getDate() + (dayOfWeek+(7-this.getDay())) % 7);
+            return this
+        }
+
+        function firstSunday(date) {
+            const d = new Date(date.getTime());
+            d.setDate(1);
+            let day = d.getDay();
+            let toNextSun = day !== 0 ? 7 - day : 0;
+            d.setDate(d.getDate() + toNextSun);
+            return d
+        }
+
+        (function () { // Move down 1st and 3rd if next Sunday is the 2nd or 4th
+            const nextSunday = (new Date()).nextDay(0);
+            let weekNum = nextSunday.getWeekOfMonth(true);
+            if (firstSunday(nextSunday).getWeekOfMonth(true) === 2) {
+                weekNum--;
+            }
+            if (weekNum === 2 || weekNum == 4) {
+                document.getElementById('1st3rd').style.order = "20";
+                document.getElementById('adultSundaySchool').style.order = "21";
+                document.getElementById('youthSundaySchool').style.order = "22";
+            }
+        }());
+
     </script>
 </body>
 
