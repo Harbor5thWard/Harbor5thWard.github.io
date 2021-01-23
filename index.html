@@ -46,29 +46,28 @@
                 <h1>Youth Sunday School</h1>
                 <div>Time: 11:00am</div>
             </div>
-        <!--
+
             <h2>2nd & 4th Sundays</h2>
 
-            <div id='' class='box'>
-                <h1>Elder's Quorum</h1>
-                <div>Time: 11:00am</div>
-            </div>
-
-            <div id='' class='box'>
+            <div id='reliefSociety' class='box'>
                 <h1>Relief Society</h1>
-                <div>Time: 11:00am</div>
+                <div>Time: 10:30am</div>
             </div>
 
-            <div id='' class='box'>
-                <h1>Young Men</h1>
-                <div>Time: 11:00am</div>
-            </div>
-
-            <div id='' class='box'>
+            <div id='youngWomens' class='box'>
                 <h1>Young Women</h1>
-                <div>Time: 11:00am</div>
+                <div>Time: 10:30am</div>
             </div>
-        -->
+
+            <div id='eldersQuorum' class='box'>
+                <h1>Elders Quorum</h1>
+                <div>Time: 11:05am</div>
+            </div>
+
+            <div id='aaronicPriesthoodQuorum' class='box'>
+                <h1>Aaronic Priesthood Quorum</h1>
+                <div>Time: 11:05am</div>
+            </div>
         </section>
 
         <section id='updates'>
@@ -94,6 +93,18 @@
         }, {
             id: 'youthSundaySchool',
             link: 'U2FsdGVkX19IGNSJJ4zKMFwVBz8lICFiwioGTN1zTgfdAYO1OIo7rJWg+0AyCOw2krXPc4AwPNgzwh+UO37M8ItKdSD00z3jAwWz7qRKWUlKN2Zs/yFT7NweIsV1ghDy',
+        }, {
+            id: 'reliefSociety',
+            link: 'U2FsdGVkX19ZqN1F8r9T55SB7VyL5h/wvLv2T8nfMW5uRy/6KiKu1NVGs5aN9oX4XmyqFOX8JH8Q9j2qzy8ZulO041uYeQ+9pjqjIT6r3GWnMqnuCtKo0ftwNy9LGIMo',
+        }, {
+            id: 'youngWomens',
+            link: 'U2FsdGVkX1+GojpbeCEYGNoAyXugFBTfE0LqNL5cNzgVm39RVP7YYCWMn6k93aExGt64l5GwYVW4h9Vs0Flb5XSMguHDC7vTDHmvTV0OF1y6SkkOaPYhb/ELcOHmuL0i',
+        }, {
+            id: 'eldersQuorum',
+            link: 'U2FsdGVkX18FMlP3vAGjgsvT+BisfmGQECQcuUrO63WLc26xkUq424ZFr0OwP/dvGuS9uy+FhyUt47ci8PXtesQjiNst9GfCXcOoyg1La1mUI426iyH/R3ms8Dke/Hz0',
+        }, {
+            id: 'aaronicPriesthoodQuorum',
+            link: 'U2FsdGVkX1+V4XBZR7Ag3PE9kkaTd6u+fBA/Z/QArHgVOSSO65ytra9NuBitGHTq9vE7aerpZwQtTw9H1ktnqpNmObZPhz+wh//6dcWJ388p89QDQccxT72fAbKfMQDQ',
         }].map(v => {
             document.getElementById(v.id).onclick = function () {
                 console.log('id', v.id)
