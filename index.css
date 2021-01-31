@@ -138,8 +138,7 @@ main > * {
 
 .text-box li { margin: 1rem 0;}
 .text-box a { color: lightblue; }
-.text-box a:active { color:orange; }
-.text-box a:visited:active { color:orange; }
+.text-box a:active, .text-box a:visited:active { color:orange; }
 .text-box a:visited {color: lightcoral; }
 
 @media only screen and (max-device-width: 480px) { /* Phones */
