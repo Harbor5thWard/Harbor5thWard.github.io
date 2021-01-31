@@ -37,7 +37,7 @@
                 <div>Time: 9:00am</div>
             </button>
 
-            <h2 id="1st3rd">1st, 3rd, & 5th Sundays</h2>
+            <h2 id="1st3rd">1st & 3rd Sundays</h2>
 
             <button id='adultSundaySchool' class='zoom'>
                 <h1>Adult Sunday School</h1>
@@ -163,9 +163,16 @@
                 weekNum--;
             }
             if (weekNum === 2 || weekNum == 4) {
-                document.getElementById('1st3rd').style.order = "20";
-                document.getElementById('adultSundaySchool').style.order = "21";
-                document.getElementById('youthSundaySchool').style.order = "22";
+                document.getElementById('1st3rd').style.order = '20';
+                document.getElementById('adultSundaySchool').style.order = '21';
+                document.getElementById('youthSundaySchool').style.order = '22';
+                return;
+            }
+            if (weekNum === 5) {
+                document.getElementById('1st3rd').innerHTML = '5th Sunday';
+                document.getElementById('adultSundaySchool').childNodes[1].innerHTML = 'Combined Meeting';
+                document.getElementById('youthSundaySchool').style.display = 'none';
+                return;
             }
         }());
 
