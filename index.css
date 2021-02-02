@@ -145,7 +145,10 @@ main > * {
     header > h1 { font-size: 3rem; }
     main { flex-direction: column; }
     .zoom { width: 350px; }
-    .text-box {margin-bottom: 100px;}
+    .text-box {
+        margin-bottom: 100px;
+        max-width: 80%;
+    }
     main > *:nth-child(2n) {
         border-top: 2px solid black;
     }

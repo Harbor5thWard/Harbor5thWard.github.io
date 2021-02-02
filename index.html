@@ -22,7 +22,6 @@
         <h1>Harbor 5th Ward</h1>
     </header>
     <section id="buttons">
-        <a href="https://www.churchofjesuschrist.org/manual/come-follow-me"><button>Come Follow Me</button></a>
         <a href="https://directory.churchofjesuschrist.org/"><button>Directory</button></a>
         <a href="https://www.facebook.com/groups/352374239338591"><button>Facebook</button></a>
         <a href="https://goo.gl/maps/G1PoXQ3FHThMsHB77"><button>Map</button></a>
@@ -73,9 +72,19 @@
         </section>
 
         <section id='updates'>
+            <h1>Come Follow Me</h1>
+            <div class='text-box'>
+                <ul>
+                    <li><a id="cfm-if">Individuals and Families</a></li>
+                    <li><a id="cfm-ss">Sunday School</a></li>
+                    <li><a id="cfm-apqwm">Aaronic Priesthood Quorums and Young Women</a></li>
+                    <li><a id="cfm-p">Primary</a></li>
+                </ul>
+            </div>
+
             <h1>References</h1>
             <div class='text-box'>
-                <ul >
+                <ul>
                     <li><a href='https://www.churchofjesuschrist.org/study/manual/general-handbook/21-ministering'>Ministering</a></li>
                     <li>Sacrament Prayers</li>
                     <ul style="list-style-type: circle;">
@@ -147,6 +156,14 @@
             return this
         }
 
+        Date.prototype.getWeekNumber = function(){
+            var d = new Date(Date.UTC(this.getFullYear(), this.getMonth(), this.getDate()));
+            var dayNum = d.getUTCDay() || 7;
+            d.setUTCDate(d.getUTCDate() + 4 - dayNum);
+            var yearStart = new Date(Date.UTC(d.getUTCFullYear(),0,1));
+            return Math.ceil((((d - yearStart) / 86400000) + 1)/7)
+        };
+
         function firstSunday(date) {
             const d = new Date(date.getTime());
             d.setDate(1);
@@ -158,23 +175,38 @@
 
         (function () { // Move down 1st and 3rd if next Sunday is the 2nd or 4th
             const nextSunday = (new Date()).nextDay(0);
-            let weekNum = nextSunday.getWeekOfMonth(true);
+            let weekOfMonth = nextSunday.getWeekOfMonth(true);
             if (firstSunday(nextSunday).getWeekOfMonth(true) === 2) {
-                weekNum--;
+                weekOfMonth--;
             }
-            if (weekNum === 2 || weekNum == 4) {
+            if (weekOfMonth === 2 || weekOfMonth == 4) {
                 document.getElementById('1st3rd').style.order = '20';
                 document.getElementById('adultSundaySchool').style.order = '21';
                 document.getElementById('youthSundaySchool').style.order = '22';
                 return;
             }
-            if (weekNum === 5) {
+            if (weekOfMonth === 5) {
                 document.getElementById('1st3rd').innerHTML = '5th Sunday';
                 document.getElementById('adultSundaySchool').childNodes[1].innerHTML = 'Combined Meeting';
                 document.getElementById('youthSundaySchool').style.display = 'none';
                 return;
             }
         }());
+
+        (function () { // populate come follow me links
+            const nextMonday = (new Date()).nextDay(1);
+            const weekOfYear = (nextMonday.getWeekNumber() + 1)
+
+            const urlPrefix = 'https://www.churchofjesuschrist.org/study/manual/come-follow-me-for-';
+            const weekWithTwoDigits = weekOfYear.toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false});
+            document.getElementById('cfm-if').href = `${urlPrefix}individuals-and-families-doctrine-and-covenants-2021/${weekWithTwoDigits}`;
+            document.getElementById('cfm-ss').href = `${urlPrefix}sunday-school-doctrine-and-covenants-2021/${weekWithTwoDigits}`;
+            document.getElementById('cfm-p').href = `${urlPrefix}primary-doctrine-and-covenants-2021/${weekWithTwoDigits}`;
+
+            const halfWeekWithDigits = Math.floor(weekOfYear/2).toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false});
+            document.getElementById('cfm-apqwm').href = `${urlPrefix}aaronic-priesthood-quorums-and-young-women-classes-doctrinal-topics-2021/${halfWeekWithDigits}`;
+        }());
+
 
     </script>
 </body>
