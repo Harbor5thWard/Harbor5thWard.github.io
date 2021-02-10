@@ -194,8 +194,8 @@
         }());
 
         (function () { // populate come follow me links
-            const nextMonday = (new Date()).nextDay(1);
-            const weekOfYear = (nextMonday.getWeekNumber() + 1)
+            const nextSunday = (new Date()).nextDay(0);
+            const weekOfYear = (nextSunday.getWeekNumber() + 1)
 
             const urlPrefix = 'https://www.churchofjesuschrist.org/study/manual/come-follow-me-for-';
             const weekWithTwoDigits = weekOfYear.toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false});
