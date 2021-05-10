@@ -33,42 +33,28 @@
 
             <button id='sacrament' class='zoom'>
                 <h1>Sacrament Meeting</h1>
-                <div>Time: 9:00am</div>
+                <div>Time: 8:30am</div>
             </button>
 
-            <h2 id="1st3rd">1st & 3rd Sundays</h2>
 
-            <button id='adultSundaySchool' class='zoom'>
-                <h1>Adult Sunday School</h1>
-                <div>Time: 10:30am</div>
-            </button>
+            <div id="1st3rd" class='text-box'>
+                <ul>
+                    <h2>1st & 3rd Sundays</h2>
+                    <li>Sunday School</li>
+                </ul>
+            </div>
 
-            <button id='youthSundaySchool' class='zoom'>
-                <h1>Youth Sunday School</h1>
-                <div>Time: 11:15am</div>
-            </button>
+            <br>
 
-            <h2 id='2nd4th'>2nd & 4th Sundays</h2>
-
-            <button id='reliefSociety' class='zoom'>
-                <h1>Relief Society</h1>
-                <div>Time: 10:30am</div>
-            </button>
-
-            <button id='youngWomens' class='zoom'>
-                <h1>Young Women</h1>
-                <div>Time: 10:30am</div>
-            </button>
-
-            <button id='eldersQuorum' class='zoom'>
-                <h1>Elders Quorum</h1>
-                <div>Time: 11:15am</div>
-            </button>
-
-            <button id='aaronicPriesthoodQuorum' class='zoom'>
-                <h1>Aaronic Priesthood Quorum</h1>
-                <div>Time: 11:15am</div>
-            </button>
+            <div id="2nd4th" class='text-box'>
+                <ul>
+                    <h2>2nd & 4th Sundays</h2>
+                    <li>Relife Society</li>
+                    <li>Young Women</li>
+                    <li>Elders Quorum</li>
+                    <li>Aaronic Priesthood Quorum</li>
+                </ul>
+            </div>
         </section>
 
         <section id='updates'>
@@ -181,14 +167,6 @@
             }
             if (weekOfMonth === 2 || weekOfMonth == 4) {
                 document.getElementById('1st3rd').style.order = '20';
-                document.getElementById('adultSundaySchool').style.order = '21';
-                document.getElementById('youthSundaySchool').style.order = '22';
-                return;
-            }
-            if (weekOfMonth === 5) {
-                document.getElementById('1st3rd').innerHTML = '5th Sunday';
-                document.getElementById('adultSundaySchool').childNodes[1].innerHTML = 'Combined Meeting';
-                document.getElementById('youthSundaySchool').style.display = 'none';
                 return;
             }
         }());
