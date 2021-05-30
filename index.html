@@ -115,10 +115,13 @@
             id: 'aaronicPriesthoodQuorum',
             link: 'U2FsdGVkX1+V4XBZR7Ag3PE9kkaTd6u+fBA/Z/QArHgVOSSO65ytra9NuBitGHTq9vE7aerpZwQtTw9H1ktnqpNmObZPhz+wh//6dcWJ388p89QDQccxT72fAbKfMQDQ',
         }].map(v => {
-            document.getElementById(v.id).onclick = function () {
-                console.log('id', v.id)
-                let link = window.decrypt(v.link);
-                window.open(link);
+            var el = document.getElementById(v.id);
+            if (!!el) {
+                el.onclick = function () {
+                    console.log('id', v.id)
+                    let link = window.decrypt(v.link);
+                    window.open(link);
+                }
             }
         });
 
