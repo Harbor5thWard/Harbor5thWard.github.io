@@ -124,6 +124,9 @@
             }
         });
 
+        const now = () => new Date(); // For testing future dates
+        // const now = () => new Date('01 Mar 2021 00:00:00 MST');
+
         Date.prototype.getWeekOfMonth = function(exact) {
             var month = this.getMonth()
                 , year = this.getFullYear()
@@ -162,7 +165,7 @@
         }
 
         (function () { // Move down 1st and 3rd if next Sunday is the 2nd or 4th
-            const nextSunday = (new Date()).nextDay(0);
+            const nextSunday = now().nextDay(0);
             let weekOfMonth = nextSunday.getWeekOfMonth(true);
             if (firstSunday(nextSunday).getWeekOfMonth(true) === 2) {
                 weekOfMonth--;
@@ -174,17 +177,20 @@
         }());
 
         (function () { // populate come follow me links
-            const nextSunday = (new Date()).nextDay(0);
-            const weekOfYear = (nextSunday.getWeekNumber() + 1)
+            const nextSunday = now().nextDay(0);
+            let weekOfYear = (nextSunday.getWeekNumber() + 1)
+            if (weekOfYear > 52) weekOfYear = 1;
 
+            const year = now().getFullYear()
             const urlPrefix = 'https://www.churchofjesuschrist.org/study/manual/come-follow-me-for-';
+            const urlSuffix = `-old-testament-${year}`;
             const weekWithTwoDigits = weekOfYear.toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false});
-            document.getElementById('cfm-if').href = `${urlPrefix}individuals-and-families-doctrine-and-covenants-2021/${weekWithTwoDigits}`;
-            document.getElementById('cfm-ss').href = `${urlPrefix}sunday-school-doctrine-and-covenants-2021/${weekWithTwoDigits}`;
-            document.getElementById('cfm-p').href = `${urlPrefix}primary-doctrine-and-covenants-2021/${weekWithTwoDigits}`;
+            document.getElementById('cfm-if').href = `${urlPrefix}individuals-and-families${urlSuffix}/${weekWithTwoDigits}`;
+            document.getElementById('cfm-ss').href = `${urlPrefix}sunday-school${urlSuffix}/${weekWithTwoDigits}`;
+            document.getElementById('cfm-p').href = `${urlPrefix}primary${urlSuffix}/${weekWithTwoDigits}`;
 
-            const halfWeekWithDigits = Math.floor(weekOfYear/2).toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false});
-            document.getElementById('cfm-apqwm').href = `${urlPrefix}aaronic-priesthood-quorums-and-young-women-classes-doctrinal-topics-2021/${halfWeekWithDigits}`;
+            const halfWeekWithDigits = Math.max(1, Math.floor(weekOfYear/2)).toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false});
+            document.getElementById('cfm-apqwm').href = `${urlPrefix}aaronic-priesthood-quorums-and-young-women-classes-doctrinal-topics-${year}/${halfWeekWithDigits}`;
         }());
 
 
