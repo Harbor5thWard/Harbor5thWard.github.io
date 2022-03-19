@@ -96,7 +96,8 @@
         let links = [{
             id: 'sacrament',
             url: 'https://zoom.us/j/99707158731',
-            link: 'U2FsdGVkX1+nfc3WeuNd3kv6Fpm7eIi8hBg3Efi9Tv3tsVaAXjd7Ig3M22xzul7yZsMG22PFZPKcftoZO+nmxw==',
+            // skipio link: 'U2FsdGVkX1+nfc3WeuNd3kv6Fpm7eIi8hBg3Efi9Tv3tsVaAXjd7Ig3M22xzul7yZsMG22PFZPKcftoZO+nmxw==',
+            link: 'U2FsdGVkX1+yfgJRDqKTS5ig90moKfgcy0Y7Cdh+yWlvaZ1sG0703pMYxzyKetxt',
         }, {
             id: 'adultSundaySchool',
             link: 'U2FsdGVkX197SBpwd7yOgPicP/3GxmOyHFVqIXK+aWZVqTE9xvTOXebV2r1VhhXTGTuniYZXBOwuokJHPTO9CHuuRINXAv/Oo9VGclZKqjcYOWluMt2wxZERDZ3qo0Ur',
@@ -119,9 +120,8 @@
             var el = document.getElementById(v.id);
             if (!!el) {
                 el.onclick = function () {
-                    if (v.url) window.open(URL);
-                    console.log('id', v.id);
                     let link = window.decrypt(v.link);
+                    console.log(v.id, link);
                     window.open(link);
                 }
             }
