@@ -15,6 +15,21 @@
     <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/img/favicon/favicon-16x16.png">
     <link rel="manifest" href="/site.webmanifest">
+    <script>
+        let links = [{
+            id: 'sacrament',
+            url: 'https://zoom.us/j/99707158731'
+        },{
+            id: 'relief',
+            url: 'https://zoom.us/j/98673006360'
+        },{
+            id: 'elders',
+            url: 'https://zoom.us/j/99758881897'
+        },{
+            id: 'sunday-school',
+            url: 'https://zoom.us/j/94484185919'
+        }];
+    </script>
 </head>
 
 <body>
@@ -40,7 +55,12 @@
             <div id="1st3rd" class='text-box'>
                 <ul>
                     <h2>1st & 3rd Sundays</h2>
-                    <li>Sunday School</li>
+                    <button id='sunday-school' class='zoom'>
+                        <h1>Sunday School</h1>
+                        <div>Zoom only on 3rd Sundays</div>
+                        <div>Time: 11:30am</div>
+                        <div>Click to lauch Zoom</div>
+                    </button>
                 </ul>
             </div>
 
@@ -97,29 +117,11 @@
     </main>
 
     <script>
-        const passphrase = 'secret harbor pioneer passphrase';
-
-        window.encrypt = function(text) { return CryptoJS.AES.encrypt(text, passphrase).toString(); }
-        decrypt = function(text) { return CryptoJS.AES.decrypt(text, passphrase).toString(CryptoJS.enc.Utf8); }
-
-        let links = [{
-            id: 'sacrament',
-            link: 'U2FsdGVkX1+yfgJRDqKTS5ig90moKfgcy0Y7Cdh+yWlvaZ1sG0703pMYxzyKetxt',
-        },{
-            id: 'relief',
-            link: 'U2FsdGVkX1/KRRzwjhDE/qd+qwVyDdj449ha7JeO3b3q5K5zt/uMQg6zOCmvLoPJ',
-        },{
-            id: 'elders',
-            link: 'U2FsdGVkX18R0iyradbZ7FfTQ4IrDLSBbbVdZyQhC0ZdryFguVXUwK2eYe4z8B0l',
-        }].map(v => {
+       links.map(v => {
             var el = document.getElementById(v.id);
-            if (!!el) {
-                el.onclick = function () {
-                    let link = window.decrypt(v.link);
-                    console.log(v.id, link);
-                    window.open(link);
-                }
-            }
+            if (!el) return;
+            el.onclick = () => window.open(v.url);
+            el.title = v.url;
         });
 
         const now = () => new Date(); // For testing future dates
