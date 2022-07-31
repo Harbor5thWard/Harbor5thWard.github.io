@@ -21,7 +21,6 @@ h1 { font-size: 2.5rem; text-shadow: 1px 1px 2px black; }
 h2 { font-size: 1.8rem; text-shadow: 1px 1px 2px black; }
 .zoom h1 {font-size: 1.3rem; text-shadow: none; }
 
-
 body {
     margin: 0;
     padding: 0;
@@ -134,8 +133,8 @@ main > * {
     border-radius: 10px;
     background-color: rgba(0, 0, 0, 0.5);
     min-width: 50%;
-    min-height: 100px;
     padding: 10px 30px;
+    margin-bottom: 20px;
 }
 
 .text-box li { margin: 1rem 0;}
@@ -143,12 +142,18 @@ main > * {
 .text-box a:active, .text-box a:visited:active { color:orange; }
 .text-box a:visited {color: lightcoral; }
 
+.horizontal {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 10px
+}
+
 @media only screen and (max-device-width: 480px) { /* Phones */
     header > h1 { font-size: 3rem; }
     main { flex-direction: column; }
     .zoom { width: 350px; }
     .text-box {
-        margin-bottom: 100px;
         max-width: 80%;
     }
     main > *:nth-child(2n) {
